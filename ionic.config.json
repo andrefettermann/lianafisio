@@ -1,0 +1,7 @@
+{
+  "name": "lianafisio",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

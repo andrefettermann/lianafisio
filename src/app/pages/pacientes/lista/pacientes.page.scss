@@ -1,0 +1,12 @@
+.centralizar {
+  display: flex;
+  justify-content: center; /* Alinha horizontalmente */
+  align-items: center;     /* Alinha verticalmente */
+  height: 100%;            /* Garante altura total */
+}
+
+.full-width-card {
+    margin-left: 5 !important;
+    margin-right: 5 !important;
+    width: 100%;
+}

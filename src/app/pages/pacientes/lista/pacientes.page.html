@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Pacientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="centralizar">
+  <ion-list>
+    @for (paciente of pacientes; track paciente; let index = $index) {
+    <ion-item>
+      <!--
+      <ion-avatar slot="start">
+        <img [src]="'https://picsum.photos/80/80?random=' + index" alt="avatar" />
+      </ion-avatar>
+      <ion-label>{{ paciente }}</ion-label>
+      -->
+
+      <ion-card class="full-width-card">
+        <ion-card-header>
+          <ion-card-title>{{ paciente.getNome()}}</ion-card-title>
+          <ion-card-subtitle>{{ paciente.getDataNascimento()}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>{{ paciente.getTelefone() }}</p>
+          <p>{{ paciente.getEmail() }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+    }
+
+  </ion-list>
+
+  @if (pacientes.length == 0) {
+    <ion-text color="info">
+      <p>Nenhum paciente cadastrado ainda.</p>
+    </ion-text>
+  }
+
+    <!-- FAB -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="adicionarItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
