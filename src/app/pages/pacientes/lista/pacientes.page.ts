@@ -16,7 +16,7 @@ export class PacientesPage implements OnInit {
 
   constructor(private pacienteService: PacienteService, private router: Router) {}
 
-  async ngOnInit() {
+  async carregaOsDados() {
     try {
       await this.pacienteService.login("", "");
 
@@ -26,11 +26,24 @@ export class PacientesPage implements OnInit {
       console.error('Erro:', err);
 //      this.message = 'Erro ao chamar a function.';
     }
+  }
 
+  async ngOnInit() {
+    this.carregaOsDados();
   }
 
   adicionarItem() {
     this.router.navigate(['/formulario']);
+  }
+
+  atualiza(event: any) {
+    console.log('Recarregando dados...');
+
+    // Aqui você pode chamar seu serviço de API, por exemplo
+    setTimeout(() => {
+      this.carregaOsDados(); // Atualiza os dados
+      event.target.complete(); // Finaliza o carregamento
+    }, 1000); // Simula um atraso
   }
 
   onIonInfinite(event: InfiniteScrollCustomEvent) {
